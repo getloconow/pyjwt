@@ -104,6 +104,9 @@ def raw_to_der_signature(raw_sig, curve):
     num_bits = curve.key_size
     num_bytes = (num_bits + 7) // 8
 
+    if (len(raw_sig) == 130):
+        num_bytes = 65
+
     if len(raw_sig) != 2 * num_bytes:
         raise ValueError('Invalid signature')
 
